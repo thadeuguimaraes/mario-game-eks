@@ -13,10 +13,10 @@ provider "aws" {
 
 module "imersao_vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "5.1.1" # Use the latest available version
+  version = "5.1.1"
 
-  name            = "imersao_vpc"
-  cidr            = "10.0.0.0/16"  # Corrected CIDR block without the trailing dot
+  name            = "imersao-vpc"
+  cidr            = var.vpc_cidr
   private_subnets = var.private_subnet_cidr_blocks
   public_subnets  = var.public_subnet_cidr_blocks
   azs             = var.azs
@@ -34,15 +34,16 @@ module "imersao_vpc" {
     "kubernetes.io/role/elb"            = 1
   }
   private_subnet_tags = {
-    "kubernetes.io/cluster/imersao-eks"  = "shared"
-    "kubernetes.io/cluster/internal-elb" = 1
+    "kubernetes.io/cluster/imersao-eks" = "shared"
+    "kubernetes.io/role/internal-elb"   = 1
   }
+
 }
 
-module "imersao-eks" {
+module "imersao_eks" {
   source  = "terraform-aws-modules/eks/aws"
   version = "~> 19.0"
-
+  
   cluster_name    = "imersao-eks"
   cluster_version = "1.27"
 
@@ -54,7 +55,7 @@ module "imersao-eks" {
     live = {
       min_size     = 1
       max_size     = 3
-      desired_size = 3
+      desired_size  = 3
 
       instance_types = ["t3.micro"]
     }
