@@ -81,6 +81,10 @@ kubectl get svc
 ```
 You should see an external IP assigned to the LoadBalancer service, allowing access to the Nginx deployment from the internet.
 
+## Testing the EKS Cluster with the application
+```bash
+ kubectl apply -f ./kube-news/k8s/deployment.yaml 
+```
 ## Clean Up
 
 To clean up the resources created during testing, you can delete the deployment and the LoadBalancer service:
