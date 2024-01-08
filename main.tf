@@ -45,19 +45,19 @@ module "matrix_eks" {
   version = "~> 19.0"
 
   cluster_name    = "matrix-eks"
-  cluster_version = "1.27"
+  cluster_version = "1.28"
 
   subnet_ids                     = module.matrix_vpc.private_subnets
   vpc_id                         = module.matrix_vpc.vpc_id
   cluster_endpoint_public_access = true
 
   eks_managed_node_groups = {
-    live = {
+    node-app = {
       min_size     = 1
-      max_size     = 3
+      max_size     = 2
       desired_size = 1
 
-      instance_types = ["t2.micro"]
+      instance_types = ["t2.medium"]
     }
   }
 }
