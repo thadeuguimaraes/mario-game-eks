@@ -1,0 +1,37 @@
+# Deployment for Game Mario
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mario-game
+  labels:
+    app: mario-game
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mario-game
+  template:
+    metadata:
+      labels:
+        app: mario-game
+    spec:
+      containers:
+      - name: mario-game
+        image: thsre/mario:latest
+        ports:
+        - containerPort: 80
+        
+---
+# Service for Game Mario
+apiVersion: v1
+kind: Service
+metadata:
+  name: mario-service
+spec:
+  type: LoadBalancer
+selector:
+  app: mario-game
+ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
