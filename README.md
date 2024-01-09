@@ -1,6 +1,8 @@
 Super Mario é um jogo clássico amado por muitos. Neste guia, exploraremos como implantar um jogo Super Mario no Elastic Kubernetes Service (EKS) da Amazon. Utilizando o Kubernetes, podemos orquestrar a implantação do jogo no AWS EKS, permitindo escalabilidade, confiabilidade e fácil gerenciamento.
+![mario](https://github.com/thadeuguimaraes/mario-game-eks/assets/52017205/1af3d16a-5944-4db4-8c17-b85d32f91ab3)
 
 ## Pré-requisitos:
+
 
 1. Uma instância Ubuntu
  
