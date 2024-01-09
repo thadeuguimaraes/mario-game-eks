@@ -4,9 +4,9 @@ Super Mario é um jogo clássico amado por muitos. Neste guia, exploraremos como
 ## Pré-requisitos:
 
 
-1. Uma instância Ubuntu
+1. Uma instância EC2 Ubuntu 
  
-2. IAM Role  
+2. IAM Role (Access Control)
  
 3. O Terraform deve ser instalado na instância 
  
